@@ -1,0 +1,9 @@
+*.pyc
+*.swp
+*.sqlite3
+static_files/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
