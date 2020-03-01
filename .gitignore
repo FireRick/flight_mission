@@ -1,6 +1,7 @@
 *.pyc
 *.swp
 *.sqlite3
+*.txt
 static_files/
 
 # Distribution / packaging
