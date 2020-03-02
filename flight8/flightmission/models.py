@@ -1,5 +1,12 @@
 from django.db import models
 
+
+def user_directory_path(instance, filename):
+    '''Specify the name of each file according to the date of the mission.'''
+    return 'mission_data_files/%s_%s.dat' % (
+        instance.mission_date.strftime('%Y-%m-%d_%H-%M'), instance.aircraft_id)
+
+
 # Create your models here.
 class Aircraft(models.Model):
     AIRCRAFT_TYPE_CHOICES = [
@@ -97,7 +104,7 @@ class Mission(models.Model):
     other_people = models.CharField(max_length=100, verbose_name='其他人员',
             blank=True, help_text='100字以内')
     data_file = models.FileField(verbose_name='飞行数据文件',
-            upload_to='mission-data-files', help_text='上传飞行数据文件')
+            upload_to=user_directory_path, help_text='上传飞行数据文件')
 
     def __str__(self):
         return str(self.mission_date)
