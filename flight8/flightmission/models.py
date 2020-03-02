@@ -95,7 +95,7 @@ class Mission(models.Model):
     security = models.ManyToManyField(Crew, related_name='mission_sec')
     recorder = models.ManyToManyField(Crew, related_name='mission_rec')
     other_people = models.CharField(max_length=100, verbose_name='其他人员',
-            help_text='100字以内')
+            blank=True, help_text='100字以内')
     data_file = models.FileField(verbose_name='飞行数据文件',
             upload_to='mission-data-files', help_text='上传飞行数据文件')
 
