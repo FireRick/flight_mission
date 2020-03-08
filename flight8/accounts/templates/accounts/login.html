@@ -1,0 +1,45 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>用户名或密码错误，请重试！</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post">
+{% csrf_token %}
+<table>
+    <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+    </tr>
+    <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+    </tr>
+</table>
+
+<input type="submit" value="登录">
+
+{% if next %}
+    <input type="hidden" name="next" value="{{ next }}">
+{% else %}
+    <input type="hidden" name="next" value="{% url 'profile' %}">
+{% endif %}
+
+</form>
+
+<div class="password-reset-link">
+<a href="{% url 'password_reset' %}">忘记密码？</a>
+</div>
+
+{% endblock %}

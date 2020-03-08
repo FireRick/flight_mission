@@ -25,14 +25,14 @@ SECRET_KEY = 'x0^3fbgthq7bv5@f36rc%8farro79-qxavliwv+bi5#&dzn7z7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.56.101']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'flightmission.apps.FlightmissionConfig',
-    # 'flightmission',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,4 +121,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/var/www/flight8/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'rick_mxd@163.com'
+EMAIL_HOST_PASSWORD = 'askljdflajd45ddf'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
