@@ -2,4 +2,17 @@
 
 {% block content %}
 
+<div>
+{% for mission in missions %}
+<a href="#"><h2>任务 {{ mission.id }}</h2></a>
+<ul>
+    <li>任务时期：{{ mission.mission_date }}</li>
+    <li>飞机编号：{{ mission.aircraft }}</li>
+    <li>地点：{{ mission.place }}</li>
+</ul>
+<hr>
+{% endfor %}
+</div>
+    
+
 {% endblock %}
