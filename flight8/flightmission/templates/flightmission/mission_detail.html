@@ -1,0 +1,51 @@
+{% extends 'flightmission/base.html' %}
+
+{% block content %}
+
+<ul>
+    <li>任务时期：{{ mission.mission_date }}</li>
+    <li>飞机编号：{{ mission.aircraft }}</li>
+    <li>地点：{{ mission.place }}</li>
+    <li>任务类型：{{ mission.mission_type_human_read }}</li>
+    <li>飞行时间：{{ mission.duration }}</li>
+    <li>天气类型：{{ mission.weather_type_human_read }}</li>
+    <li>天气状况描述：{{ mission.weather_description }}</li>
+    <li>任务描述：{{ mission.mission_description }}</li>
+    <li>任务完成情况：{{ mission.mission_situation }}</li>
+    <li>指挥员：{{ mission.commander }}</li>
+    <li>飞控手：
+        {% for pilot in mission.get_pilots %}
+        {{ pilot }}
+        {% endfor %}
+    </li>
+    <li>地面站操作员：
+        {% for gcs_operator in mission.get_gcs_operators %}
+        {{ gcs_operator }}
+        {% endfor %}
+    </li>
+    <li>地勤：
+        {% for groundservice in mission.get_groundservices %}
+        {{ groundservice }}
+        {% endfor %}
+    </li>
+    <li>机务：
+        {% for maintenance in mission.get_maintenances %}
+        {{ maintenance }}
+        {% endfor %}
+    </li>
+    <li>安全保障：
+        {% for security in mission.get_securities %}
+        {{ security }}
+        {% endfor %}
+    </li>
+    <li>记录员：
+        {% for recorder in mission.get_recorders %}
+        {{ recorder }}
+        {% endfor %}
+    </li>
+    <li>其他人员：{{ mission.other_people }}</li>
+    <li>数据文件：{{ mission.data_file }}</li>
+</ul>
+    
+
+{% endblock %}

@@ -106,6 +106,38 @@ class Mission(models.Model):
     data_file = models.FileField(verbose_name='飞行数据文件',
             upload_to=user_directory_path, help_text='上传飞行数据文件')
 
+    @property
+    def get_pilots(self):
+        return self.pilot.all()
+
+    @property
+    def get_gcs_operators(self):
+        return self.gcs_operator.all()
+
+    @property
+    def get_groundservices(self):
+        return self.groundservice.all()
+
+    @property
+    def get_maintenances(self):
+        return self.maintenance.all()
+
+    @property
+    def get_securities(self):
+        return self.security.all()
+
+    @property
+    def get_recorders(self):
+        return self.recorder.all()
+
+    @property
+    def mission_type_human_read(self):
+        return self.get_mission_type_display()
+
+    @property
+    def weather_type_human_read(self):
+        return self.get_weather_type_display()
+
     def __str__(self):
         return str(self.mission_date)
 

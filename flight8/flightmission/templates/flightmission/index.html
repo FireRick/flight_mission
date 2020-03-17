@@ -4,7 +4,7 @@
 
 <div>
 {% for mission in missions %}
-<a href="#"><h2>任务 {{ mission.id }}</h2></a>
+<a href="{% url 'flightmission:mission_detail' mission.id %}"><h2>任务 {{ mission.id }}</h2></a>
 <ul>
     <li>任务时期：{{ mission.mission_date }}</li>
     <li>飞机编号：{{ mission.aircraft }}</li>
