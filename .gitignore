@@ -2,7 +2,11 @@
 *.swp
 *.sqlite3
 *.txt
+*.dat
 static_files/
+
+# vscode debug
+.vscode/
 
 # Distribution / packaging
 build/
