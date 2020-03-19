@@ -1,0 +1,11 @@
+{% extends 'flightmission/base.html' %}
+
+{% block content %}
+
+<p>飞行任务已上传成功！</p>
+
+<a href="{% url 'flightmission:mission_upload' %}">继续上传</a>
+
+<a href="{% url 'flightmission:index' %}">返回首页</a>
+
+{% endblock %}
