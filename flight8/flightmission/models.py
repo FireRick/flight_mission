@@ -23,6 +23,16 @@ class Aircraft(models.Model):
     init_flight_hour = models.DecimalField(max_digits=7, decimal_places=2,
             verbose_name='飞行小时数初值', help_text='精度为0.01h')
 
+    @property
+    def get_flight_hours(self):
+        mission_set = self.mission_set.all()
+        flight_hours = sum([item.duration for item in mission_set])
+        return flight_hours
+
+    @property
+    def aircraft_type_human_read(self):
+        return self.get_aircraft_type_display()
+
     def __str__(self):
         return self.aircraft_number
 

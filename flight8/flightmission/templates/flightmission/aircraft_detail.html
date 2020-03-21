@@ -1,0 +1,13 @@
+{% extends 'flightmission/base.html' %}
+
+{% block content %}
+
+<ul>
+    <li>飞机编号：{{ aircraft.aircraft_number }}</li>
+    <li>飞机类型：{{ aircraft.aircraft_type_human_read }}</li>
+    <li>制造日期：{{ aircraft.production_date }}</li>
+    <li>累计飞行小时：{{ aircraft.get_flight_hours }}</li>
+</ul>
+    
+
+{% endblock %}

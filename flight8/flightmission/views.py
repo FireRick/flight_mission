@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic.list import ListView
 from django.contrib.auth.decorators import login_required, permission_required
 
-from flightmission.models import Mission
+from flightmission.models import Mission, Aircraft
 from .forms import MissionForm
 
 
@@ -44,3 +44,9 @@ def mission_upload_view(request):
 
 def mission_upload_done_view(request):
     return render(request, 'flightmission/mission_upload_done.html')
+
+
+@login_required
+def aircraft_detail_view(request, aircraft_number):
+    aircraft = Aircraft.objects.get(aircraft_number=aircraft_number)
+    return render(request, 'flightmission/aircraft_detail.html', {'aircraft': aircraft})
